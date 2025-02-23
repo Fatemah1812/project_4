@@ -22,7 +22,5 @@ hist=px.histogram(car_prices_fuel, x='price', color='fuel',
                  title='Distribution of Price by Fuel Type',
                  labels={'price': 'Price (USD)', 'fuel': 'Fuel Type'})
 
-agree = st.checkbox("I agree")
-
 if st.checkbox('Show Histogram'):
         st.plotly_chart(hist)
