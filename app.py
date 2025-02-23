@@ -12,11 +12,12 @@ vehicles['cylinders'] = vehicles.groupby('model')['cylinders'].fillna(vehicles['
 
 vehicles['odometer'] = vehicles.groupby('model')['odometer'].fillna(vehicles['odometer'].median())
 
-cars_days_listed=vehicles.groupby('type')['days_listed'].mean().reset_index()
+cars_days_listed=vehicles.groupby('odometere')['days_listed'].mean().reset_index()
 st.header('Car Types vs Average days cars are listed')
-plot=px.scatter(cars_days_listed, x="type", y="days_listed", 
-                 title="Car Types vs Average days cars are listed ",
+plot=px.scatter(cars_days_listed, x="odometer", y="days_listed", 
+                 title="Car Milage vs Average days cars are listed ",
                  labels={ 'days_listed': 'Average days cars are listed'}
+                 
                  )
 
 if st.checkbox('Show Plot'):
