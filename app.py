@@ -13,7 +13,8 @@ vehicles['cylinders'] = vehicles.groupby('model')['cylinders'].fillna(vehicles['
 vehicles['odometer'] = vehicles.groupby('model')['odometer'].fillna(vehicles['odometer'].median())
 
 cars_days_listed=vehicles.groupby('odometere')['days_listed'].mean().reset_index()
-st.header('Car Types vs Average days cars are listed')
+st.header('Car Milage vs Car Demand')
+
 plot=px.scatter(cars_days_listed, x="odometer", y="days_listed", 
                  title="Car Milage vs Average days cars are listed ",
                  labels={ 'days_listed': 'Average days cars are listed'}
@@ -22,6 +23,7 @@ plot=px.scatter(cars_days_listed, x="odometer", y="days_listed",
 
 if st.checkbox('Show Plot'):
         st.plotly_chart(plot)
+
                  
 car_prices_fuel=vehicles[['fuel','price']]
 st.header('Distribution of Price by Fuel Type')
