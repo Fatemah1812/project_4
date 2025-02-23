@@ -13,14 +13,16 @@ plot=px.scatter(cars_days_listed, x="type", y="days_listed",
                  labels={ 'days_listed': 'Average days cars are listed'}
                  )
 
-if st.checkbox('Show Histogram'):
+if st.checkbox('Show Plot'):
         st.plotly_chart(plot)
                  
 car_prices_fuel=vehicles[['fuel','price']]
 st.header('Distribution of Price by Fuel Type')
+
 hist=px.histogram(car_prices_fuel, x='price', color='fuel', 
                  title='Distribution of Price by Fuel Type',
-                 labels={'price': 'Price (USD)', 'fuel': 'Fuel Type'})
+                 labels={'price': 'Price (USD)', 'fuel': 'Fuel Type'}
+                 )
 
 if st.checkbox('Show Histogram'):
         st.plotly_chart(hist)
