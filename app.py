@@ -12,7 +12,7 @@ vehicles['cylinders'] = vehicles.groupby('model')['cylinders'].fillna(vehicles['
 
 vehicles['odometer'] = vehicles.groupby('model')['odometer'].fillna(vehicles['odometer'].median())
 
-cars_days_listed=vehicles.groupby('odometere')['days_listed'].mean().reset_index()
+cars_days_listed=vehicles.groupby('odometer')['days_listed'].mean().reset_index()
 st.header('Car Milage vs Car Demand')
 
 plot=px.scatter(cars_days_listed, x="odometer", y="days_listed", 
