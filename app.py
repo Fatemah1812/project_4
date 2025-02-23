@@ -6,6 +6,12 @@ import plotly.io as pio
 vehicles=pd.read_csv('vehicles_us (1).csv')
 st.header('USA Vehicals Data analysis')
 
+vehicles['model_year'] = vehicles['model_year'].fillna(vehicles['model_year'].median())
+
+vehicles['cylinders'] = vehicles.groupby('model')['cylinders'].fillna(vehicles['cylinders'].median())
+
+vehicles['odometer'] = vehicles.groupby('model')['odometer'].fillna(vehicles['odometer'].median())
+
 cars_days_listed=vehicles.groupby('type')['days_listed'].mean().reset_index()
 st.header('Car Types vs Average days cars are listed')
 plot=px.scatter(cars_days_listed, x="type", y="days_listed", 
